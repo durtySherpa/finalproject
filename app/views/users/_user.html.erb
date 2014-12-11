@@ -1,6 +1,13 @@
 <li>
   <%= gravatar_for user %>
   <%= link_to user.name, user %>
+  <div>
+  <%= user.microposts.count %> report(s)
+  </div>
+  <div>
+  Platoon: <%= user.platoon%>
+  </div>
+ 
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>
