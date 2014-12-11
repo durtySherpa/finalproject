@@ -1,19 +1,40 @@
 <!-- See Hartl Listing 5.2 -->
 <% provide(:title, 'Home') %>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="col-md-12">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+	  <div class = "row">
+	  <h2> Be sure to include your Academic, Physical, and Military development updates </h2>
+	  </div>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+	<% if @feed_items.any? %>
+	 <div class="row">
+      <h3>Report Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+	<% end %>
+	
+  </div>
+<% else %>
 
 <div class="center hero-unit"> 
-  <h1>USMA CS450 HomeWork5 App</h1> 
+  <h1>Weekly Report Tracker</h1> 
 
   <h2> 
-    This is the home page for the USMA CS450 HomeWork5 Application. 
+    This is the home page for the Platoon Weekly Report Tracker. 
   </h2> 
  <div>
-	<p>This application is directly
-	derived from the <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a> 
-    sample application.</p>
+	
  </div>
   	
   <%= link_to "Sign up now!", 'signup', class: "btn btn-large btn-primary" %> 
 </div> 
 
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+<%= link_to image_tag("WPLOGO.JPG", alt: "USMA", width: 100, height: 100), 'http://www.westpoint.edu/' %>
+<% end %>

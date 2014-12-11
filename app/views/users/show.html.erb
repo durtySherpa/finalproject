@@ -4,9 +4,26 @@
   <aside class="span4">
     <section>
       <h1>
-	<%= gravatar_for @user %>
+
         <%= @user.name %>
+		
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.microposts.any? %>
+
+      <h3>Reports (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% else %>
+	<h2> User has no Reports </h2>
+	
+	<h2><li><%= link_to "Create Report", root_path %></li></h2>
+
+	<% end %>
+  </div>
+
 </div>
